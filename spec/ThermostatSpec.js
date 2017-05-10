@@ -20,4 +20,18 @@ describe("Thermostat", function() {
     thermostat.decrease();
     expect(thermostat.temperature).toEqual(19);
   });
+
+  it("cannot go below 10 degrees", function() {
+    var i = 0;
+    for (; i < 10; i++) {
+      thermostat.decrease();
+    };
+    expect(function() {
+      thermostat.decrease()
+    }).toThrow("Temperature already at minimum");
+  });
+
+  it("sets the max temperature, with PSM on by default", function() {
+    expect(thermostat.maxTemperature).toEqual(25);
+  });
 });
