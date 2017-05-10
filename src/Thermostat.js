@@ -6,15 +6,17 @@ function Thermostat() {
 };
 
 Thermostat.prototype.increase = function() {
+  this._maxtemperatureCheck();
   this.temperature += 1;
 };
 
 Thermostat.prototype.decrease = function() {
-  this._temperatureCheck();
+  this._mintemperatureCheck();
   this.temperature -= 1;
 };
 
 Thermostat.prototype.togglePowerSaving = function() {
+ this.temperature >= 26 ? this.temperature = 25 : this.temperature = this.temperature;
  this.maxTemperature === 25 ? this.maxTemperature = 32 : this.maxTemperature = 25;
 };
 
@@ -30,8 +32,14 @@ Thermostat.prototype.energyUsage = function() {
 
 // Private
 
-Thermostat.prototype._temperatureCheck = function() {
+Thermostat.prototype._mintemperatureCheck = function() {
   if (this.temperature <= this.minTemperature) {
     throw "Temperature already at minimum";
-  };
+  }
+};
+
+Thermostat.prototype._maxtemperatureCheck = function() {
+  if (this.temperature >= this.maxTemperature) {
+    throw "Temperature at maximum";
+  }
 };

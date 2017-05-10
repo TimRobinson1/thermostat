@@ -31,6 +31,16 @@ describe("Thermostat", function() {
     }).toThrow("Temperature already at minimum");
   });
 
+  it("cannot go above 25 degrees with PSM on", function() {
+    var i = 0;
+    for (; i < 5; i++) {
+      thermostat.increase();
+    };
+    expect(function() {
+      thermostat.increase();
+    }).toThrow("Temperature at maximum");
+  });
+
   it("sets the max temperature, with PSM on by default", function() {
     expect(thermostat.maxTemperature).toEqual(25);
   });

@@ -15,28 +15,52 @@
   <body>
     <div class='container'>
       <h1>OUR AMAZING THERMOSTAT!</h1>
-      <h2 id='temperature'>20&deg;c</h2>
-      <h3 id='usage'>Usage display goes here!!!</h3>
-
+      <h2 id='temperature'><span id='temp'></span>&deg;c</h2>
+      <h3 id='usage'></h3>
       <label>
-        <button id='increase'>+</button>
+        <button onclick='increase();' id='increase'>+</button>
       </label>
       <label>
-        <button id='decrease'>-</button>
+        <button onclick='decrease();' id='decrease'>-</button>
       </label>
       <label>
-        <button id='reset'>20&deg;c</button>
+        <button onclick='reset();' id='reset'>20&deg;c</button>
       </label>
       <br />
 
       <p class='power'><span class='psm-title'>Power Saving Mode:</span></p>
       <label class='switch'>
-        <input type='checkbox' checked>
+        <input onclick='togglePSM();' type='checkbox' checked>
         <div class='slider round'></div>
       </label>
       <!-- <script src="jquery.js"></script> -->
       <script type='text/javascript' src='src/Thermostat.js'></script>
       <script>
+        var thermostat = new Thermostat();
+        $('#temp').text(thermostat.temperature);
+        $('#usage').text(thermostat.energyUsage());
+        function increase() {
+          thermostat.increase();
+          $('#temp').text(thermostat.temperature);
+          $('#usage').text(thermostat.energyUsage());
+        }
+        function decrease() {
+          thermostat.decrease();
+          $('#temp').text(thermostat.temperature);
+          $('#usage').text(thermostat.energyUsage());
+        }
+
+        function reset() {
+          thermostat.reset();
+          $('#temp').text(thermostat.temperature);
+          $('#usage').text(thermostat.energyUsage());
+        }
+
+        function togglePSM() {
+          thermostat.togglePowerSaving();
+          $('#temp').text(thermostat.temperature);
+          $('#usage').text(thermostat.energyUsage());
+        }
         
       </script>
     </div>
