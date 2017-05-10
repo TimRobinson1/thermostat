@@ -20,7 +20,11 @@ Thermostat.prototype.togglePowerSaving = function() {
 
 Thermostat.prototype.reset = function() {
   this.temperature = this.defaultTemperature;
-}
+};
+
+Thermostat.prototype.energyUsage = function() {
+  if(this.temperature < 18) return 'low-usage';
+};
 
 // Private
 
