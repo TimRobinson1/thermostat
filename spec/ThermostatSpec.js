@@ -34,4 +34,9 @@ describe("Thermostat", function() {
   it("sets the max temperature, with PSM on by default", function() {
     expect(thermostat.maxTemperature).toEqual(25);
   });
+
+  it("sets the max temperature, with PSM off", function() {
+    thermostat.togglePowerSaving()
+    expect(thermostat.maxTemperature).toEqual(32);
+  });
 });
