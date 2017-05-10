@@ -1,0 +1,175 @@
+body {
+
+  background-color: lightgrey;
+  font-family:monospace;
+
+}
+
+h1 {
+
+  font-family:fantasy;
+  font-style:italic;
+  font-size:30px;
+
+}
+
+.container {
+
+  display:block;
+  width:485px;
+  margin:0 auto;
+  text-align: center;
+
+}
+
+.psm-title {
+  font-weight:bold;
+  font-size:20px;
+}
+
+button {
+
+  padding:10px;
+  font-size:25px;
+  width:50px;
+  height:50px;
+  border:none;
+  outline:none;
+  border-radius:15%;
+
+}
+
+.power {
+
+  padding-top:30px;
+
+}
+
+#increase {
+
+  background-color:crimson;
+  color:white;
+  transition: background-color 0.5s;
+
+}
+
+#increase:hover {
+
+  background-color:darkred;
+
+}
+
+#increase:active {
+
+  background-color:black;
+
+}
+
+#decrease {
+
+  background-color:#6495ed;
+  color:white;
+  transition: background-color 0.5s;
+
+}
+
+#decrease:hover {
+
+  background-color:navy;
+
+}
+
+#decrease:active {
+
+  background-color:black;
+
+}
+
+#reset {
+  background-color:#fff8dc;
+  width:90px;
+  transition: background-color 0.5s;
+}
+
+#reset:hover {
+
+  background-color:#A49480;
+
+}
+
+#reset:active {
+
+  background-color:black;
+
+}
+
+#usage {
+  font-size:20px;
+  padding-bottom:30px;
+}
+
+#temperature {
+
+  font-size:100px;
+  font-family:monospace;
+
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: limegreen;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px limegreen;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
