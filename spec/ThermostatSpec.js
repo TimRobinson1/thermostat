@@ -46,11 +46,23 @@ describe("Thermostat", function() {
     expect(thermostat.temperature).toEqual(20);
   });
 
-  it("returns low usage when asked, if the temp is under 18", function() {
+  it("returns low-usage when asked, if the temp is under 18", function() {
     var i = 0;
     for (; i < 3; i++) {
       thermostat.decrease();
     };
     expect(thermostat.energyUsage()).toEqual('low-usage');
+  });
+
+  it("returns medium-usage when asked, if the temp is under 25", function() {
+    expect(thermostat.energyUsage()).toEqual('medium-usage');
+  });
+
+  it("returns high-usage when asked, if the temp is 25 or higher", function() {
+    var i = 0;
+    for (; i < 5; i++) {
+      thermostat.increase();
+    };
+    expect(thermostat.energyUsage()).toEqual('high-usage');
   });
 });
