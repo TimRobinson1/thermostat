@@ -1,0 +1,268 @@
+body {
+
+  background-color: lightgrey;
+  font-family:monospace;
+
+}
+
+h1 {
+
+  font-family:fantasy;
+  font-style:italic;
+  font-size:30px;
+  color:red;
+
+}
+
+
+#thermometer {
+
+  width:100%;
+  height:100%;
+  background-color:cornsilk;
+
+}
+
+#thermo-container {
+
+  background-color: transparent;
+  width:25px;
+  height:200px;
+  overflow:hidden;
+  border-radius:25%;
+  position: absolute;
+  margin-left:380px;
+  margin-top:30px;
+  box-shadow: 5px 5px 1px grey;
+
+}
+
+#thermo-box {
+
+  background-color: #000080;
+  width:300px;
+  height:100%;
+
+}
+
+#thermo-bottom {
+
+  position:absolute;
+  width:35px;
+  height:35px;
+  top:340px;
+  margin-left:375px;
+  border-radius:50%;
+  background-color:#000080;
+  box-shadow: 5px 5px 1px grey;
+
+}
+
+#thermo-container img {
+
+  position:absolute;
+  height:400px;
+
+}
+
+#display-container {
+
+  border: 1px solid black;
+  background-color:lightblue;
+  border-radius:15%;
+  width:90%;
+  margin:0 auto;
+  margin-bottom:30px;
+  color:darkblue;
+
+}
+
+#thermostat {
+
+  background-color:beige;
+  width:500px;
+  height:600px;
+  margin-top:85px;
+  padding-top:20px;
+  border-radius:5%;
+  box-shadow: 15px 15px 5px grey;
+
+}
+
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.right-side {
+
+  width:70%;
+  float:right;
+
+}
+
+.left-side {
+  display:block;
+  background-color:green;
+  width:30%;
+  height:1125px;
+  float:left;
+}
+
+
+
+.container {
+
+  display:block;
+  width:485px;
+  margin:0 auto;
+  text-align: center;
+
+}
+
+.psm-title {
+  font-weight:bold;
+  font-size:20px;
+}
+
+button {
+
+  padding:10px;
+  font-size:25px;
+  width:100px;
+  height:90px;
+  border:2px outset black;
+  color:black !important;
+  outline:none;
+  border-radius:15%;
+
+}
+
+.power {
+
+  padding-top:30px;
+
+}
+
+#increase {
+
+  background-color:lightgrey;
+  color:crimson !important;
+  font-size: 40px;
+  font-weight:bold;
+
+}
+
+#decrease {
+
+  background-color:lightgrey;
+  color:#6495ed !important;
+  font-size: 40px;
+  font-weight:bold;
+
+}
+
+#reset {
+  background-color:lightgrey;
+  font-size: 40px;
+  width:160px;
+}
+
+#usage {
+  font-size:30px;
+  padding-bottom:20px;
+  margin-top:-20px;
+}
+
+#temperature {
+
+  font-size:100px;
+  font-family:monospace;
+
+}
+
+#psm-status {
+
+  position:absolute;
+  font-weight:bold;
+  font-size:40px;
+  margin-left:50px;
+  margin-top:-340px;
+
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: limegreen;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px limegreen;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

@@ -8,61 +8,140 @@
   <meta name='description' content='An amazing thermostat'>
   <meta name='author' content='TiBaNi'>
 
-  <link rel='stylesheet' href='css/styles.css'>
+  <link rel='stylesheet' href='public/css/styles.css'>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
   <body>
-    <div class='container'>
-      <h1>OUR AMAZING THERMOSTAT!</h1>
-      <h2 id='temperature'><span id='temp'></span>&deg;c</h2>
-      <h3 id='usage'></h3>
-      <label>
-        <button onclick='increase();' id='increase'>+</button>
-      </label>
-      <label>
-        <button onclick='decrease();' id='decrease'>-</button>
-      </label>
-      <label>
-        <button onclick='reset();' id='reset'>20&deg;c</button>
-      </label>
-      <br />
+    <div class='left-side'>
+      <div class="cities" align="center">
+         <input type="text" name="cityWeather" class="input-weather">
+         <input type="button" value="Get Weather" onclick="getWeather()">
+       </div>
 
-      <p class='power'><span class='psm-title'>Power Saving Mode:</span></p>
-      <label class='switch'>
-        <input onclick='togglePSM();' type='checkbox' checked>
-        <div class='slider round'></div>
-      </label>
-      <!-- <script src="jquery.js"></script> -->
-      <script type='text/javascript' src='src/Thermostat.js'></script>
-      <script>
-        var thermostat = new Thermostat();
-        $('#temp').text(thermostat.temperature);
-        $('#usage').text(thermostat.energyUsage());
-        function increase() {
-          thermostat.increase();
-          $('#temp').text(thermostat.temperature);
-          $('#usage').text(thermostat.energyUsage());
-        }
-        function decrease() {
-          thermostat.decrease();
-          $('#temp').text(thermostat.temperature);
-          $('#usage').text(thermostat.energyUsage());
-        }
-
-        function reset() {
-          thermostat.reset();
-          $('#temp').text(thermostat.temperature);
-          $('#usage').text(thermostat.energyUsage());
-        }
-
-        function togglePSM() {
-          thermostat.togglePowerSaving();
-          $('#temp').text(thermostat.temperature);
-          $('#usage').text(thermostat.energyUsage());
-        }
-        
-      </script>
+      <div class=‘city-display’>
+         <h2 class="city"></h2>
+         <p>Temperature:<span class="temperature"></span>&deg;C</p>
+         <p>Highs:<span class="temp_max"></span>&deg;C</p>
+         <p>Lows:<span class="temp_min"></span>&deg;C</p>
+       </div>
     </div>
+    <div class='right-side'>
+    <div class='container'>
+      <div id='thermostat'>
+        <div id='display-container'>
+          <div id='thermo-container'>
+            <img id='thermo-lines' src="public/images/thermo-lines.png">
+            <div id='thermo-box'>
+              <div id='thermometer'>
+
+              </div>
+            </div>
+          </div>
+          <div id='thermo-bottom'></div>
+          <h2 id='temperature'><span id='temp'></span>&deg;c</h2>
+          <h3 id='usage'></h3>
+          <p id='psm-status'>PSM ON</p>
+        </div>
+        <label>
+          <button class='button' id='increase'>+</button>
+        </label>
+        <label>
+          <button class='button' id='decrease'>-</button>
+        </label>
+        <label>
+          <button class='button' id='reset'>RESET</button>
+        </label>
+        <br />
+
+        <p class='power'><span class='psm-title'>Power Saving Mode:</span></p>
+        <label class='switch'>
+          <input id='togglePSM' type='checkbox' checked>
+          <div class='slider round'></div>
+        </label>
+      </div>
+
+
+
+
+
+
+    </div>
+  </div>
+  <!-- <script src="jquery.js"></script> -->
+  <script type='text/javascript' src='src/Thermostat.js'></script>
+  <script type='text/javascript'>
+    var thermostat = new Thermostat();
+    displayUpdate();
+
+    $('#increase').on('click', function() {
+      thermostat.increase();
+      displayUpdate();
+    });
+
+    $('#decrease').on('click', function() {
+      thermostat.decrease();
+      displayUpdate();
+    });
+
+    $('#reset').on('click', function() {
+      thermostat.reset();
+      displayUpdate();
+    });
+
+    $('#togglePSM').on('click', function() {
+      thermostat.togglePowerSaving();
+      psmUpdate();
+      displayUpdate();
+    });
+
+    function psmUpdate() {
+      if (thermostat.maxTemperature === 32) {
+        $('#psm-status').text('PSM OFF');
+      } else {
+        $('#psm-status').text('PSM ON');
+      };
+    };
+
+    function displayUpdate() {
+      $('#temp').text(thermostat.temperature);
+      $('#usage').text(thermostat.energyUsage());
+      colorUpdate();
+      var temp = (100 - Math.floor(100 * (thermostat.temperature - thermostat.minTemperature) / (32 - thermostat.minTemperature))) + '%';
+      $('#thermometer').animate({height: temp});
+    }
+
+    function colorUpdate() {
+      if (thermostat.temperature < 13) {
+        $('#thermo-box').css('backgroundColor', '#ffcc66');
+        $('#thermo-bottom').css('backgroundColor', '#ffcc66');
+      } else if (thermostat.temperature < 18) {
+        $('#thermo-box').css('backgroundColor', '#ffcc66');
+        $('#thermo-bottom').css('backgroundColor', '#ffcc66');
+      } else if (thermostat.temperature < 25) {
+        $('#thermo-box').css('backgroundColor', '#ff9933');
+        $('#thermo-bottom').css('backgroundColor', '#ff9933');
+      } else if (thermostat.temperature < 30) {
+        $('#thermo-box').css('backgroundColor', '#ff3300');
+        $('#thermo-bottom').css('backgroundColor', '#ff3300');
+      } else {
+        $('#thermo-box').css('backgroundColor', '#ff0000');
+        $('#thermo-bottom').css('backgroundColor', '#ff0000');
+      }
+    };
+
+    function getWeather(){
+     $(".city-display").show();
+     $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + $(".input-weather").val() + "&APPID=5b09bcf52074c70d63d02d2f8e3f9557", function(json){
+       $(".city").text(json.name);
+       $(".temperature").text((json.main.temp - 273.15).toFixed(0));
+       $(".temp_min").text((json.main.temp_min - 273.15).toFixed(0));
+       $(".temp_max").text((json.main.temp_max - 273.15).toFixed(0));
+     });
+   };
+
+
+
+  </script>
   </body>
 </html>
