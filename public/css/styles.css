@@ -176,6 +176,7 @@ button {
   border:1px solid white;
   color:white;
   outline:none;
+  text-shadow: 2px 2px 2px #000000;
 
 }
 
