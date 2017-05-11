@@ -9,22 +9,26 @@
   <meta name='author' content='TiBaNi'>
 
   <link rel='stylesheet' href='public/css/styles.css'>
+  <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
   <body>
     <div class='left-side'>
+      <div class='grey-background'>
       <div class="cities" align="center">
-         <input type="text" name="cityWeather" class="input-weather">
-         <input type="button" value="Get Weather" onclick="getWeather()">
+         <input type="text" name="cityWeather" class="input-weather"> <br />
+         <input type="button" value="Weather" class='button weather-btn' onclick="getWeather()">
        </div>
 
-      <div class=‘city-display’>
+      <div class='city-display'>
          <h2 class="city"></h2>
          <p>Temperature:<span class="temperature"></span>&deg;C</p>
          <p>Highs:<span class="temp_max"></span>&deg;C</p>
          <p>Lows:<span class="temp_min"></span>&deg;C</p>
        </div>
+     </div>
     </div>
     <div class='right-side'>
     <div class='container'>
@@ -41,7 +45,7 @@
           <div id='thermo-bottom'></div>
           <h2 id='temperature'><span id='temp'></span>&deg;c</h2>
           <h3 id='usage'></h3>
-          <p id='psm-status'>PSM ON</p>
+          <p id='psm-status'>PSM: ON</p>
         </div>
         <label>
           <button class='button' id='increase'>+</button>
@@ -54,18 +58,13 @@
         </label>
         <br />
 
-        <p class='power'><span class='psm-title'>Power Saving Mode:</span></p>
+        <p class='power'><span class='psm-title'>Power Saving:</span></p>
         <label class='switch'>
           <input id='togglePSM' type='checkbox' checked>
           <div class='slider round'></div>
         </label>
       </div>
-
-
-
-
-
-
+      <h1>Thermostat</h1>
     </div>
   </div>
   <!-- <script src="jquery.js"></script> -->
@@ -97,9 +96,11 @@
 
     function psmUpdate() {
       if (thermostat.maxTemperature === 32) {
-        $('#psm-status').text('PSM OFF');
+        $('#psm-status').text('PSM: OFF');
+        $('#psm-status').css('color', 'crimson');
       } else {
-        $('#psm-status').text('PSM ON');
+        $('#psm-status').text('PSM: ON');
+        $('#psm-status').css('color', 'darkblue');
       };
     };
 
@@ -118,12 +119,15 @@
       } else if (thermostat.temperature < 18) {
         $('#thermo-box').css('backgroundColor', '#ffcc66');
         $('#thermo-bottom').css('backgroundColor', '#ffcc66');
+        $('#usage').css('color', 'green');
       } else if (thermostat.temperature < 25) {
         $('#thermo-box').css('backgroundColor', '#ff9933');
         $('#thermo-bottom').css('backgroundColor', '#ff9933');
+        $('#usage').css('color', 'darkblue');
       } else if (thermostat.temperature < 30) {
         $('#thermo-box').css('backgroundColor', '#ff3300');
         $('#thermo-bottom').css('backgroundColor', '#ff3300');
+        $('#usage').css('color', 'crimson');
       } else {
         $('#thermo-box').css('backgroundColor', '#ff0000');
         $('#thermo-bottom').css('backgroundColor', '#ff0000');
@@ -131,7 +135,7 @@
     };
 
     function getWeather(){
-     $(".city-display").show();
+      if ($(".input-weather").val() != "" ) { $(".city-display").show() };
      $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + $(".input-weather").val() + "&APPID=5b09bcf52074c70d63d02d2f8e3f9557", function(json){
        $(".city").text(json.name);
        $(".temperature").text((json.main.temp - 273.15).toFixed(0));

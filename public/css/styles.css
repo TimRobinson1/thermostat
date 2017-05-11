@@ -1,16 +1,15 @@
 body {
 
-  background-color: lightgrey;
+  background-color: black;
   font-family:monospace;
 
 }
 
 h1 {
 
-  font-family:fantasy;
-  font-style:italic;
-  font-size:30px;
-  color:red;
+  font-family: 'Fredericka the Great', cursive;
+  font-size:100px;
+  color:white;
 
 }
 
@@ -74,18 +73,19 @@ h1 {
   margin:0 auto;
   margin-bottom:30px;
   color:darkblue;
+  font-family: 'Orbitron', sans-serif;
 
 }
 
 #thermostat {
 
-  background-color:beige;
+  background-color:#f2f2f2;
   width:500px;
   height:600px;
   margin-top:85px;
   padding-top:20px;
   border-radius:5%;
-  box-shadow: 15px 15px 5px grey;
+  box-shadow: 15px 10px 5px grey;
 
 }
 
@@ -112,15 +112,19 @@ h1 {
 
 .right-side {
 
-  width:70%;
+  width:50%;
   float:right;
+  background-color:black;
 
 }
 
 .left-side {
+  background-image:url('../images/clouds.jpg');
+  background-size:cover;
+  background-repeat: no-repeat;
   display:block;
-  background-color:green;
-  width:30%;
+  margin-top:-10px;
+  width:50%;
   height:1125px;
   float:left;
 }
@@ -138,7 +142,8 @@ h1 {
 
 .psm-title {
   font-weight:bold;
-  font-size:20px;
+  font-size:35px;
+  font-family: 'Orbitron', sans-serif;
 }
 
 button {
@@ -157,6 +162,84 @@ button {
 .power {
 
   padding-top:30px;
+
+}
+
+.input-weather {
+
+  width:70%;
+  font-size:40px;
+  text-align: center;
+  border-radius:5%;
+  margin:50px 0px 30px 0px;
+  background-color:rgba(255, 255, 255, 0.3);
+  border:1px solid white;
+  color:white;
+  outline:none;
+
+}
+
+.weather-btn {
+
+  margin-top:20px;
+  width:50%;
+  font-size:45px;
+  overflow:hidden;
+  padding:0 20px;
+  height:100px;
+  border-radius: 10%;
+  background-color: #ffcc99;
+  text-shadow: 2px 2px 2px #000000;
+
+}
+
+.weather-btn:hover {
+
+  background-color: #ffa64d;
+
+}
+
+.weather-btn:active {
+
+  background-color: #804000;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+
+}
+
+.city-display {
+
+  display:none;
+  margin-top:150px;
+
+}
+
+.city {
+
+  text-align: center;
+  color:white;
+  font-size:60px;
+  text-shadow: 2px 2px 2px #000000;
+
+}
+
+.city-display p {
+
+  text-align: center;
+  color:white;
+  font-size:40px;
+  text-shadow: 2px 2px 2px #000000;
+
+}
+
+.grey-background {
+
+  width:60%;
+  height:80%;
+  margin:0 auto;
+  margin-top:90px;
+  border-radius:10%;
+  background-color: rgba(0, 0, 0, 0.15);
 
 }
 
@@ -181,6 +264,7 @@ button {
 #reset {
   background-color:lightgrey;
   font-size: 40px;
+  color:darkgreen !important;
   width:160px;
 }
 
@@ -194,8 +278,13 @@ button {
 
   font-size:100px;
   font-family:monospace;
+  font-family: 'Orbitron', sans-serif;
+  position:relative;
+  top:10px;
+  left:-10px;
 
 }
+
 
 #psm-status {
 
@@ -203,7 +292,7 @@ button {
   font-weight:bold;
   font-size:40px;
   margin-left:50px;
-  margin-top:-340px;
+  margin-top:-310px;
 
 }
 
