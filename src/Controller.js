@@ -34,9 +34,9 @@ $('.weather-btn').on('click', function() {
 
 function psmUpdate() {
   if (thermostat.maxTemperature === 32) {
-    $('#psm-status').text('PSM: OFF').css('color', 'crimson');
+    $('#psm-status').text('PSM: OFF').css('color', '#DC143C');
   } else {
-    $('#psm-status').text('PSM: ON').css('color', 'darkblue');
+    $('#psm-status').text('PSM: ON').css('color', '#00008B');
   };
 };
 
@@ -53,13 +53,13 @@ function colorUpdate() {
     $('#thermo-box, #thermo-bottom').css('backgroundColor', '#ffcc66');
   } else if (thermostat.temperature < 18) {
     $('#thermo-box, #thermo-bottom').css('backgroundColor', '#ffcc66');
-    $('#usage').css('color', 'green');
+    $('#usage').css('color', '#008000');
   } else if (thermostat.temperature < 25) {
     $('#thermo-box, #thermo-bottom').css('backgroundColor', '#ff9933');
-    $('#usage').css('color', 'darkblue');
+    $('#usage').css('color', '#00008B');
   } else if (thermostat.temperature < 30) {
     $('#thermo-box, #thermo-bottom').css('backgroundColor', '#ff3300');
-    $('#usage').css('color', 'crimson');
+    $('#usage').css('color', '#DC143C');
   } else {
     $('#thermo-box, #thermo-bottom').css('backgroundColor', '#ff0000');
   };
