@@ -24,11 +24,11 @@ $('#togglePSM').on('click', function() {
 
 $('.weather-btn').on('click', function() {
   if ($(".input-weather").val() != "" ) { $(".city-display").show() };
-   $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=" + $(".input-weather").val() + "&APPID=5b09bcf52074c70d63d02d2f8e3f9557", function(json) {
-   $(".city").text(json.name);
-   $(".temperature").text((json.main.temp - 273.15).toFixed(0));
-   $(".temp_min").text((json.main.temp_min - 273.15).toFixed(0));
-   $(".temp_max").text((json.main.temp_max - 273.15).toFixed(0));
+   $.get("http://api.openweathermap.org/data/2.5/weather?q=" + $(".input-weather").val() + "&APPID=5b09bcf52074c70d63d02d2f8e3f9557", function(weather) {
+   $(".city").text(weather.name);
+   $(".temperature").text((weather.main.temp - 273.15).toFixed(0));
+   $(".temp_min").text((weather.main.temp_min - 273.15).toFixed(0));
+   $(".temp_max").text((weather.main.temp_max - 273.15).toFixed(0));
  });
 });
 
