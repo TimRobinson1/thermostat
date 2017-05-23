@@ -6,6 +6,7 @@
 
   <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.6.1/jasmine_favicon.png">
   <link rel="stylesheet" href="lib/jasmine-2.6.1/jasmine.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <script src="lib/jasmine-2.6.1/jasmine.js"></script>
   <script src="lib/jasmine-2.6.1/jasmine-html.js"></script>
@@ -13,12 +14,15 @@
 
   <!-- include source files here... -->
   <script src="src/Thermostat.js"></script>
+  <script src="src/Controller.js"></script>
 
   <!-- include spec files here... -->
   <script src="spec/ThermostatSpec.js"></script>
+  <script src="spec/ControllerSpec.js"></script>
 
 </head>
 
-<body>
-</body>
+  <body>
+    <button class='button' id='increase'>+</button>
+  </body>
 </html>
